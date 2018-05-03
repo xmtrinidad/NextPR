@@ -1,0 +1,32 @@
+<header class="Header">
+  <div class="Header__overlay"></div>
+  <div class="Header__lead">
+    <h3>Push Towards Your Goals</h3>
+    <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn-large modal-trigger" href="#auth_modal">
+      <i class="material-icons right">create</i>Register/Login
+    </a>
+  </div>
+</header>
+
+<!-- Header Modal Structure -->
+<div id="auth_modal" class="modal">
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3">
+          <a class="active" href="#register_form">Register</a>
+        </li>
+        <li class="tab col s3">
+          <a href="#login_form">Login</a>
+        </li>
+      </ul>
+    </div>
+    <div id="register_form" class="col s12">
+      {{> _register-form}}
+    </div>
+    <div id="login_form" class="col s12">
+      {{> _login-form}}
+    </div>
+  </div>
+</div>

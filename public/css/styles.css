@@ -1,0 +1,24 @@
+.Header {
+  position: relative;
+  background-image: url('/img/header-img.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Header__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .8);
+}
+
+.Header__lead {
+  color: #fff;
+  text-align: center;
+  z-index: 1;
+}
