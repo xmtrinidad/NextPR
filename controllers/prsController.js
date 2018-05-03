@@ -1,5 +1,5 @@
 exports.get_dashboard = (req, res) => {
-  res.render('prs');
+  res.render('prs', { username: req.user.username });
 };
 
 exports.get_add_pr = (req, res) => {

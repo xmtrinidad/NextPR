@@ -1,7 +1,7 @@
 {{#if success_msg}}
 <script>
-  M.toast({ html: 'You are now registered and logged in!' });
+  M.toast({ html: `{{success_msg}}` });
 </script> {{/if}} {{#if error_msg}}
 <script>
-  M.toast({ html: 'Email already in use.  Try to register with a different email.' });
+  M.toast({ html: `{{error_msg}}` });
 </script> {{/if}}

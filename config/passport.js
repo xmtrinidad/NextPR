@@ -7,10 +7,10 @@ const User = mongoose.model('users');
 
 module.exports = (passport) => {
   passport.use(new LocalStrategy(
-    { usernameField: 'email' }, (email, password, done) => {
+    { usernameField: 'username' }, (username, password, done) => {
       // Match user
       User.findOne({
-        email: email
+        username: username
       }).then(user => {
         if (!user) {
           return done(null, false, { message: 'No User found' });

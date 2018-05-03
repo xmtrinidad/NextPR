@@ -43,6 +43,7 @@ exports.post_user_register = (req, res) => {
               newUser.save()
                 .then(user => {
                   req.flash('success_msg', 'You are now registered and logged in');
+                  // TODO: I
                   res.redirect('/prs');
                 })
                 .catch(err => console.log(err));
@@ -51,15 +52,18 @@ exports.post_user_register = (req, res) => {
         }
       });
   }
-
-
 };
 
 exports.post_user_login = (req, res, next) => {
-  res.send('User Login Works');
-  console.log(req.body);
+  passport.authenticate('local', {
+    successRedirect: '/prs',
+    failureRedirect: '/',
+    failureFlash: true
+  })(req, res, next);
 };
 
 exports.post_user_logout = (req, res) => {
-
+  req.logout();
+  req.flash('success_msg', 'You are logged out');
+  res.redirect('/');
 }
