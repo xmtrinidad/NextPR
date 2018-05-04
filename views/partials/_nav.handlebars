@@ -1,24 +1,25 @@
 <nav class="blue darken-4">
   <div class="nav-wrapper container">
-    <a href="/" class="brand-logo">NextPR</a>
+    <a {{#if user}} href="/prs" {{else}} href="/" {{/if}} class="brand-logo">NextPR</a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger">
       <i class="material-icons">menu</i>
     </a>
     <ul class="right hide-on-med-and-down">
+
+      {{#if user}}
+      <li>
+        <a href="/prs">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a href="/users/logout" class="nav-link">Logout</a>
+      </li>
+      {{else}}
       <li>
         <a href="/">Home</a>
       </li>
       <li>
         <a href="/about">More Info</a>
       </li>
-      <li>
-        <a href="/contact">Contact</a>
-      </li>
-      {{#if user}}
-      <li class="nav-item">
-        <a href="/users/logout" class="nav-link">Logout</a>
-      </li>
-      {{else}}
       <li class="nav-item">
         <a href="#auth_modal" class="nav-link modal-trigger">Login</a>
       </li>
@@ -27,20 +28,21 @@
   </div>
 </nav>
 <ul class="sidenav" id="mobile-demo">
+
+  {{#if user}}
+  <li>
+    <a href="/prs">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a href="/users/logout" class="nav-link">Logout</a>
+  </li>
+  {{else}}
   <li>
     <a href="/">Home</a>
   </li>
   <li>
     <a href="/about">More Info</a>
   </li>
-  <li>
-    <a href="/contact">Contact</a>
-  </li>
-  {{#if user}}
-  <li class="nav-item">
-    <a href="/users/logout" class="nav-link">Logout</a>
-  </li>
-  {{else}}
   <li class="nav-item">
     <a href="#auth_modal" class="nav-link modal-trigger">Login</a>
   </li>
