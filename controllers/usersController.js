@@ -42,9 +42,8 @@ exports.post_user_register = (req, res) => {
               // Save new user with hashed password
               newUser.save()
                 .then(user => {
-                  req.flash('success_msg', 'You are now registered and logged in');
-                  // TODO: I
-                  res.redirect('/prs');
+                  req.flash('success_msg', 'You are now registered and can log in');
+                  res.redirect('/');
                 })
                 .catch(err => console.log(err));
             });

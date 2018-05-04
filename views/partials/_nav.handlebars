@@ -14,13 +14,18 @@
       <li>
         <a href="/contact">Contact</a>
       </li>
+      {{#if user}}
       <li class="nav-item">
         <a href="/users/logout" class="nav-link">Logout</a>
       </li>
+      {{else}}
+      <li class="nav-item">
+        <a href="#auth_modal" class="nav-link modal-trigger">Login</a>
+      </li>
+      {{/if}}
     </ul>
   </div>
 </nav>
-
 <ul class="sidenav" id="mobile-demo">
   <li>
     <a href="/">Home</a>
@@ -31,7 +36,13 @@
   <li>
     <a href="/contact">Contact</a>
   </li>
+  {{#if user}}
   <li class="nav-item">
     <a href="/users/logout" class="nav-link">Logout</a>
   </li>
+  {{else}}
+  <li class="nav-item">
+    <a href="#auth_modal" class="nav-link modal-trigger">Login</a>
+  </li>
+  {{/if}}
 </ul>
