@@ -1,1 +1,9 @@
-<h1>Add PR Works</h1>
+<h3 class="center">Showing Exercises and PRs For {{group}}</h3>
+{{#each prs}}
+<ul>
+  <li>{{exercise_id.name}}</li>
+  <li>{{exercise_id.group}}</li>
+  <li>{{reps}}</li>
+  <li>{{max}}</li>
+</ul>
+{{/each}}

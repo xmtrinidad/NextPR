@@ -16,6 +16,22 @@ exports.get_latest = (req, res) => {
     });
 };
 
+exports.get_add_select_prs = (req, res) => {
+  res.render('prs/select');
+};
+
 exports.get_add_prs = (req, res) => {
-  res.render('prs/add');
+  // Find user PRs
+  Pr.find({ user_id: req.user._id })
+    .populate('exercise_id')
+    .exec((err, prs) => {
+      if (err) throw err;
+      // Filter PRs based on selected muscle group paramter
+      const filtered = prs.filter(pr => pr.exercise_id.group === req.params.group);
+      res.render('prs/add', { group: req.params.group, prs: filtered });
+    });
+};
+
+exports.post_add_select = (req, res) => {
+  res.redirect(`/prs/add/${req.body.group}`);
 };

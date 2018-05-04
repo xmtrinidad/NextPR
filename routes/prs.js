@@ -10,8 +10,14 @@ router.get('/', ensureAuthenticated, prs_controller.get_dashboard);
 // Get latest PRs
 router.get('/latest', ensureAuthenticated, prs_controller.get_latest);
 
-// Get add PRs
-router.get('/add', ensureAuthenticated, prs_controller.get_add_prs);
+// Get select exercise form to add
+router.get('/add/select', ensureAuthenticated, prs_controller.get_add_select_prs);
+
+// Get latest PRs based on exercise group
+router.get('/add/:group', ensureAuthenticated, prs_controller.get_add_prs);
+
+// Get select exercise to add
+router.post('/add/select', ensureAuthenticated, prs_controller.post_add_select);
 
 
 
