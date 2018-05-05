@@ -47,15 +47,19 @@ exports.post_update_pr = (req, res) => {
   });
 };
 
+// Add new pr
 exports.post_add_pr = (req, res) => {
+  // Create new Exercise
   const newExercise = new Exercise({
     name: req.body.exercise,
     group: req.body.group
   });
 
+  // Save the Exercise in order to use it to create a new PR
   newExercise.save((err, exercise) => {
     if (err) throw err;
 
+    // Create new PR
     const newPr = new Pr({
       user_id: req.user._id,
       exercise_id: exercise._id,
@@ -63,9 +67,22 @@ exports.post_add_pr = (req, res) => {
       weight: req.body.weight
     });
 
+    // Save new PR
     newPr.save((err, pr) => {
       if (err) throw err;
       res.redirect(`/prs/select/${req.body.group}`);
     })
   });
 };
+
+exports.post_delete_pr = (req, res) => {
+  Pr.findOne({ _id: req.body.pr })
+    .remove((err) => {
+      if (err) throw err;
+      Exercise.findOne({ _id: req.body.exercise })
+        .remove((err, exercise) => {
+          if (err) throw err;
+          res.redirect(`/prs/select/${req.body.group}`);
+        })
+    })
+}
