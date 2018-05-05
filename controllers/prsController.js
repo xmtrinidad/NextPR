@@ -35,3 +35,14 @@ exports.get_add_prs = (req, res) => {
 exports.post_add_select = (req, res) => {
   res.redirect(`/prs/add/${req.body.group}`);
 };
+
+exports.post_new_pr = (req, res) => {
+  Pr.findOne({ _id: req.body.pr_id }, (err, pr) => {
+    pr.reps = req.body.reps;
+    pr.weight = req.body.weight;
+    pr.save((err) => {
+      if (err) throw err;
+      res.redirect(`/prs/add/${req.params.group}`);
+    });
+  });
+};

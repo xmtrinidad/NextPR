@@ -22,3 +22,23 @@
   text-align: center;
   z-index: 1;
 }
+
+/** PR CARDS **/
+
+.Pr_cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 15px;
+}
+
+@media (min-width: 576px) {
+  .Pr_cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .Pr_cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

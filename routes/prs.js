@@ -16,8 +16,10 @@ router.get('/add/select', ensureAuthenticated, prs_controller.get_add_select_prs
 // Get latest PRs based on exercise group
 router.get('/add/:group', ensureAuthenticated, prs_controller.get_add_prs);
 
-// Get select exercise to add
+// Post selected exercise
 router.post('/add/select', ensureAuthenticated, prs_controller.post_add_select);
+
+router.post('/add/:group', ensureAuthenticated, prs_controller.post_new_pr);
 
 
 

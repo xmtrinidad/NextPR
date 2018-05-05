@@ -1,9 +1,54 @@
 <h3 class="center">Showing Exercises and PRs For {{group}}</h3>
-{{#each prs}}
-<ul>
-  <li>{{exercise_id.name}}</li>
-  <li>{{exercise_id.group}}</li>
-  <li>{{reps}}</li>
-  <li>{{max}}</li>
-</ul>
-{{/each}}
+<div class="Pr_cards">
+  {{#each prs}}
+  <div class="card">
+    <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab">
+          <a href="#{{_id}}_1">PRs</a>
+        </li>
+        <li class="tab">
+          <a href="#{{_id}}_2">Update</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-content grey lighten-4">
+      <div id="{{_id}}_1">
+        <span class="card-title">{{exercise_id.name}}</span>
+        <table class="responsive-table">
+          <thead>
+            <tr>
+              <th>Reps</th>
+              <th>Max</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>{{reps}}</td>
+              <td>{{weight}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="{{_id}}_2">
+        <span class="card-title">{{exercise_id.name}}</span>
+        <form action="/prs/add/{{exercise_id.group}}" method="POST">
+          <div class="input-field">
+            <input name="reps" id="new_reps_{{_id}}" type="number" class="validate">
+            <label for="new_reps_{{_id}}">Reps</label>
+          </div>
+          <div class="input-field">
+            <input name="weight" id="new_max_{{_id}}" type="number" class="validate">
+            <label for="new_max_{{_id}}">Max</label>
+          </div>
+          <input type="hidden" name="pr_id" value="{{_id}}">
+          <button class="btn waves-effect waves-light" type="submit">Submit
+            <i class="material-icons right">send</i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
