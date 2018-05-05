@@ -4,18 +4,18 @@
     <h4 class="center">Add New Exercise</h4>
     <form action="/prs/add" method="POST">
       <div class="input-field">
-        <input name="exercise" id="new_exercise_name" type="text" class="validate">
+        <input required name="exercise" id="new_exercise_name" type="text" class="validate">
         <label for="new_exercise_name">Exercise Name</label>
       </div>
       <div class="input-field">
-        <input name="reps" id="add_new_reps" type="number" class="validate">
+        <input required name="reps" id="add_new_reps" type="number" class="validate">
         <label for="add_new_reps">Reps</label>
       </div>
       <div class="input-field">
         <input name="weight" id="add_new_weight" type="number" class="validate">
         <label for="add_new_weight">Weight</label>
       </div>
-      <input name="group" value="{{group}}" type="hidden">
+      <input required name="group" value="{{group}}" type="hidden">
       <div class="modal-footer">
         <button class="btn waves-effect waves-light" type="submit">Submit
           <i class="material-icons right">send</i>

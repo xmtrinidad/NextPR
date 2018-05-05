@@ -1,10 +1,10 @@
 <form action="/prs/update/{{exercise_id.group}}" method="POST">
   <div class="input-field">
-    <input name="reps" id="new_reps_{{_id}}" type="number" class="validate">
+    <input required name="reps" id="new_reps_{{_id}}" type="number" class="validate">
     <label for="new_reps_{{_id}}">Reps</label>
   </div>
   <div class="input-field">
-    <input name="weight" id="new_max_{{_id}}" type="number" class="validate">
+    <input required name="weight" id="new_max_{{_id}}" type="number" class="validate">
     <label for="new_max_{{_id}}">Max</label>
   </div>
   <input type="hidden" name="pr_id" value="{{_id}}">
