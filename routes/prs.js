@@ -22,6 +22,8 @@ router.post('/select', ensureAuthenticated, prs_controller.post_select);
 // Update exercise in group
 router.post('/update/:group', ensureAuthenticated, prs_controller.post_update_pr);
 
+router.post('/add', ensureAuthenticated, prs_controller.post_add_pr);
+
 
 
 
