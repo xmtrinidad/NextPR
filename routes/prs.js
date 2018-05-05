@@ -11,13 +11,13 @@ router.get('/', ensureAuthenticated, prs_controller.get_dashboard);
 router.get('/latest', ensureAuthenticated, prs_controller.get_latest);
 
 // Get select exercise form to add
-router.get('/add/select', ensureAuthenticated, prs_controller.get_add_select_prs);
+router.get('/select', ensureAuthenticated, prs_controller.get_select_prs);
 
 // Get latest PRs based on exercise group
-router.get('/add/:group', ensureAuthenticated, prs_controller.get_add_prs);
+router.get('/select/:group', ensureAuthenticated, prs_controller.get_selected_prs);
 
 // Post selected exercise
-router.post('/add/select', ensureAuthenticated, prs_controller.post_add_select);
+router.post('/select', ensureAuthenticated, prs_controller.post_select);
 
 // Update exercise in group
 router.post('/update/:group', ensureAuthenticated, prs_controller.post_update_pr);

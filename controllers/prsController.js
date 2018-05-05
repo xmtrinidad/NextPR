@@ -16,11 +16,11 @@ exports.get_latest = (req, res) => {
     });
 };
 
-exports.get_add_select_prs = (req, res) => {
+exports.get_select_prs = (req, res) => {
   res.render('prs/select');
 };
 
-exports.get_add_prs = (req, res) => {
+exports.get_selected_prs = (req, res) => {
   // Find user PRs
   Pr.find({ user_id: req.user._id })
     .populate('exercise_id')
@@ -32,8 +32,8 @@ exports.get_add_prs = (req, res) => {
     });
 };
 
-exports.post_add_select = (req, res) => {
-  res.redirect(`/prs/add/${req.body.group}`);
+exports.post_select = (req, res) => {
+  res.redirect(`/prs/select/${req.body.group}`);
 };
 
 exports.post_update_pr = (req, res) => {
@@ -42,7 +42,7 @@ exports.post_update_pr = (req, res) => {
     pr.weight = req.body.weight;
     pr.save((err) => {
       if (err) throw err;
-      res.redirect(`/prs/add/${req.params.group}`);
+      res.redirect(`/prs/select/${req.params.group}`);
     });
   });
 };
