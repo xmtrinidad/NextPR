@@ -49,30 +49,40 @@ exports.post_update_pr = (req, res) => {
 
 // Add new pr
 exports.post_add_pr = (req, res) => {
-  // Create new Exercise
-  const newExercise = new Exercise({
-    name: req.body.exercise,
-    group: req.body.group
-  });
+  const submittedExercise = req.body.exercise.toLowerCase().trim();
+  // Check if exercise already exist
+  Exercise.findOne({ name: submittedExercise })
+    .then(exercise => {
+      if (exercise) {
+        req.flash('error_msg', 'Exercise already exist');
+        res.redirect(`/prs/select/${req.body.group}`);
+      } else {
+        // Create new Exercise
+        const newExercise = new Exercise({
+          name: submittedExercise,
+          group: req.body.group
+        });
 
-  // Save the Exercise in order to use it to create a new PR
-  newExercise.save((err, exercise) => {
-    if (err) throw err;
+        // Save the Exercise in order to use it to create a new PR
+        newExercise.save((err, exercise) => {
+          if (err) throw err;
 
-    // Create new PR
-    const newPr = new Pr({
-      user_id: req.user._id,
-      exercise_id: exercise._id,
-      reps: req.body.reps,
-      weight: req.body.weight
+          // Create new PR
+          const newPr = new Pr({
+            user_id: req.user._id,
+            exercise_id: exercise._id,
+            reps: req.body.reps,
+            weight: req.body.weight
+          });
+
+          // Save new PR
+          newPr.save((err, pr) => {
+            if (err) throw err;
+            res.redirect(`/prs/select/${req.body.group}`);
+          })
+        });
+      }
     });
-
-    // Save new PR
-    newPr.save((err, pr) => {
-      if (err) throw err;
-      res.redirect(`/prs/select/${req.body.group}`);
-    })
-  });
 };
 
 exports.post_delete_pr = (req, res) => {
