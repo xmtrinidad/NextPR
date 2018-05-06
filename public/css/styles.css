@@ -23,12 +23,28 @@
   z-index: 1;
 }
 
+/** ADD MODAL **/
+
+#add_modal {
+  height: 400px;
+}
+
 /** PR CARDS **/
 
 .Pr_cards {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 15px;
+}
+
+/** HIDE NUMBER INPUT SPINNER **/
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 
 @media (min-width: 576px) {
