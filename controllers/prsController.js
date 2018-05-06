@@ -60,7 +60,7 @@ exports.post_update_pr = (req, res) => {
 exports.post_add_pr = (req, res) => {
   const submittedExercise = req.body.exercise.toLowerCase().trim();
   // Check if exercise already exist
-  Exercise.findOne({ name: submittedExercise })
+  Exercise.findOne({ name: submittedExercise, user_id: req.user._id })
     .then(exercise => {
       if (exercise) {
         req.flash('error_msg', 'Exercise already exist');
@@ -69,7 +69,8 @@ exports.post_add_pr = (req, res) => {
         // Create new Exercise
         const newExercise = new Exercise({
           name: submittedExercise,
-          group: req.body.group
+          group: req.body.group,
+          user_id: req.user._id
         });
 
         // Save the Exercise in order to use it to create a new PR
