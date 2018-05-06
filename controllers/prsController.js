@@ -6,8 +6,8 @@ exports.get_dashboard = (req, res) => {
 };
 
 
+// Get all PRs by the authenticated user
 exports.get_latest = (req, res) => {
-  // Find PRs by the authenticated user id
   Pr.find({ user_id: req.user._id })
     .populate('exercise_id')
     .exec((err, prs) => {
@@ -16,8 +16,17 @@ exports.get_latest = (req, res) => {
     });
 };
 
-exports.get_select_prs = (req, res) => {
-  res.render('prs/select');
+// Get PRs by group for authenticated user
+exports.get_latest_group = (req, res) => {
+  Pr.find({ user_id: req.user._id })
+    .populate('exercise_id')
+    .exec((err, prs) => {
+      if (err) return err;
+      const filteredPrs = prs.filter(pr => pr.exercise_id.group === req.params.group);
+      res.render('prs/latest', { prs: filteredPrs });
+    });
+
+
 };
 
 exports.get_selected_prs = (req, res) => {
