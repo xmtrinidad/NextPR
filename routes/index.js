@@ -10,8 +10,6 @@ router.get('/', index_controller.get_index);
 router.get('/about', index_controller.get_about);
 
 // Undefind route redirect
-router.get('*', function (req, res) {
-  res.redirect('/prs')
-});
+router.get('*', index_controller.get_undefined_redirect);
 
 module.exports = router;

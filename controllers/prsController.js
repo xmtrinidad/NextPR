@@ -47,12 +47,18 @@ exports.post_select = (req, res) => {
 
 exports.post_update_pr = (req, res) => {
   Pr.findOne({ _id: req.body.pr_id }, (err, pr) => {
-    pr.reps = req.body.reps;
-    pr.weight = req.body.weight;
-    pr.save((err) => {
-      if (err) throw err;
+    if (pr.weight >= req.body.weight) {
+      req.flash('error_msg', "PR not updated because it isn't a new PR max.");
       res.redirect(`/prs/select/${req.params.group}`);
-    });
+    } else {
+      pr.reps = req.body.reps;
+      pr.weight = req.body.weight;
+      pr.save((err) => {
+        if (err) throw err;
+        req.flash('error_msg', "PR has been updated!");
+        res.redirect(`/prs/select/${req.params.group}`);
+      });
+    }
   });
 };
 
