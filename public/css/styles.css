@@ -9,6 +9,10 @@
 
 /** End Utility Styles **/
 
+main {
+  min-height: 650px;
+}
+
 .Header {
   position: relative;
   background-image: url('/img/header-img.jpeg');

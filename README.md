@@ -122,5 +122,11 @@ Notice how the above script tag goes up two levels before going into the *js* fo
 
 For the main **index.js* view, this was correct.  But since I'm using *handlebars* as my view engine, changes had to be made to the script src attribute.  For every level my view went down, I hade to reach up one level to reach my *js* folder.
 
-For example, after I created **pr** routes (```localhost:5000/pr```), my script src had to be changed to ```../js/index.js```
+For example, after I created **pr** routes (```localhost:5000/pr```), my script src had to be changed to ```../js/index.js``` in order to reach up one level to the *js* folder.
+
+This application goes, at most, two levels (```localhost:5000/pr/latest```), so in the end, the script src goes up two levels: ```../../js/index.js```
+
+The custom CSS stylesheet needs to be imported the same way.
+
+---
 
