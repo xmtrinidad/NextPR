@@ -1,3 +1,14 @@
+/** Utility Styles **/
+.my-1 {
+  margin: 10px 0;
+}
+
+.my-2 {
+  margin: 20px 0;
+}
+
+/** End Utility Styles **/
+
 .Header {
   position: relative;
   background-image: url('/img/header-img.jpeg');
