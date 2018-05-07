@@ -2,6 +2,14 @@
 
 Create exercises, add a new personal record, update when you accomlish a new goal!
 
+## Deployment
+
+<http://www.nextpr.online/>
+
+As of 5/7/2018, I have deployed a basic prototype of the application using Heroku.  Since this is a demo application with no real security concerns, it is not using SSL/HTTPs to encrypt data.
+
+For more information on how to use SSL/HTTPs with a deployed application on Digital Ocean, I created a [guide](https://github.com/xmtrinidad/DigitalOcean-Walkthrough) that demonstrates this using the LAMP stack.
+
 ## About
 
 My goal for this project, from a development standpoint, was to create a full CRUD application with user authentication using Node.js/Express.  Check out the [guide](#guide) for more information.
@@ -129,4 +137,17 @@ This application goes, at most, two levels (```localhost:5000/pr/latest```), so 
 The custom CSS stylesheet needs to be imported the same way.
 
 ---
+
+### Routes & Controllers
+
+In the [resouces](#resources) section, I linked to what is, in my opinion, a great tutorial that demonstrates a proper MVC pattern to structure routes and controllers in an Express application.
+
+I tried to adhear to the same principles in this application.  There is no logic in any of my routing files:
+
+```js
+// User Register POST
+router.post('/register', users_controller.post_user_register);
+```
+
+The only thing this route definition does is define the route and references the controller's function, where the logic is located that performs logic, which in this case, registers a user.
 
