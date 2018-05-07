@@ -23,7 +23,7 @@ exports.get_latest_group = (req, res) => {
     .exec((err, prs) => {
       if (err) return err;
       const filteredPrs = prs.filter(pr => pr.exercise_id.group === req.params.group);
-      res.render('prs/latest', { prs: filteredPrs });
+      res.render('prs/latest', { prs: filteredPrs, group: req.params.group });
     });
 
 

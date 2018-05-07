@@ -1,4 +1,8 @@
-<h3 class="center">Showing Exercises and PRs For {{group}}</h3>
+{{#if prs}}
+<h3 class="center">Showing {{group}} PRs</h3>
+{{else}}
+<h3 class="center">No PRs for {{group}}</h3>
+{{/if}}
 <div class="center my-2">
   <a class="waves-effect waves-light btn modal-trigger" href="#add_new">
     <i class="material-icons left">add</i>Add Exercise

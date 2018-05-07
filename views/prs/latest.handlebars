@@ -1,4 +1,15 @@
-<h3 class="center">Showing all PRs</h3>
+{{#if prs}} {{#if group}}
+<h3 class="center">Showing all PRs for {{group}}</h3>
+{{else}}
+<h3 class="center">Showing all PRs{{group}}</h3>
+{{/if}} {{else}}
+<div class="center">
+  <h3>No PRs for {{group}}</h3>
+  <p>
+    <a href="/prs/select/{{group}}">Add PRs</a>
+  </p>
+</div>
+{{/if}}
 
 <!-- Group Filter Button -->
 <div class="center my-2">
